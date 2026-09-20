@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 330" width="1180" height="330" role="img" aria-label="Shot pipeline: trigger pull fires the XRI activated event, FireBulletOnActivate spawns a rigidbody bullet at the muzzle, physics carries it downrange, and BulletHit destroys it and spawns a billboarded impact VFX.">
+  <style>
+    .bg   { fill: #ffffff; }
+    .card { fill: #f6f8fa; stroke: #d0d7de; }
+    .hl   { fill: #fff4ec; stroke: #ff6b3d; }
+    .t    { fill: #1f2328; font-family: Segoe UI, Helvetica Neue, Arial, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+    .sub  { fill: #5a6472; }
+    .arrow{ stroke: #8c96a3; fill: none; }
+    .ahead{ fill: #8c96a3; }
+    .accent { fill: #ff6b3d; }
+    @media (prefers-color-scheme: dark) {
+      .bg   { fill: #0d1117; }
+      .card { fill: #161b22; stroke: #30363d; }
+      .hl   { fill: #23180f; stroke: #ff6b3d; }
+      .t    { fill: #e6edf3; }
+      .sub  { fill: #9aa5b1; }
+      .arrow{ stroke: #6e7781; }
+      .ahead{ fill: #6e7781; }
+    }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" class="ahead"/>
+    </marker>
+  </defs>
+
+  <rect width="1180" height="330" class="bg"/>
+
+  <text x="40" y="44" class="t" font-size="20" font-weight="600">How a shot travels</text>
+  <text x="40" y="68" class="sub" font-size="13.5">Bullets are real rigidbodies, not raycasts — at 20 m/s you can watch one fly.</text>
+
+  <!-- 1 trigger -->
+  <rect x="40" y="104" width="196" height="92" rx="10" class="card"/>
+  <text x="62" y="134" class="t" font-size="14.5" font-weight="600">Trigger pull</text>
+  <text x="62" y="158" class="sub mono" font-size="11.5">XRGrabInteractable</text>
+  <text x="62" y="176" class="sub mono" font-size="11.5">.activated</text>
+
+  <path d="M244 150 H292" class="arrow" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- 2 fire -->
+  <rect x="300" y="104" width="216" height="92" rx="10" class="hl" stroke-width="1.6"/>
+  <text x="322" y="134" class="t" font-size="14.5" font-weight="600">FireBulletOnActivate</text>
+  <text x="322" y="158" class="sub mono" font-size="11.5">Instantiate(bullet)</text>
+  <text x="322" y="176" class="sub mono" font-size="11.5">v = muzzle.forward × 20</text>
+
+  <path d="M524 150 H572" class="arrow" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- 3 physics -->
+  <rect x="580" y="104" width="196" height="92" rx="10" class="card" stroke-dasharray="5 4"/>
+  <text x="602" y="134" class="t" font-size="14.5" font-weight="600">Physics step</text>
+  <text x="602" y="158" class="sub" font-size="11.5">arcs downrange</text>
+  <text x="602" y="176" class="sub mono" font-size="11.5">auto-destroy @ 5s</text>
+
+  <path d="M784 150 H832" class="arrow" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- 4 hit -->
+  <rect x="840" y="104" width="300" height="92" rx="10" class="hl" stroke-width="1.6"/>
+  <text x="862" y="134" class="t" font-size="14.5" font-weight="600">BulletHit</text>
+  <text x="862" y="158" class="sub mono" font-size="11.5">OnCollisionEnter → tag "Bullet"</text>
+  <text x="862" y="176" class="sub" font-size="11.5">destroy round + spawn impact VFX</text>
+
+  <!-- branch down -->
+  <path d="M990 204 V236" class="arrow" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="840" y="244" width="300" height="56" rx="10" class="card"/>
+  <text x="862" y="268" class="t" font-size="13" font-weight="600">VFX billboards to the headset</text>
+  <text x="862" y="288" class="sub mono" font-size="11.5">transform.LookAt(xrCamera)</text>
+
+  <!-- tracer flourish -->
+  <path d="M120 232 Q460 300 840 272" class="arrow" stroke-width="0" fill="none"/>
+  <circle cx="140" cy="150" r="0" class="accent"/>
+</svg>

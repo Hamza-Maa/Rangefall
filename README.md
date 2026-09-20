@@ -2,6 +2,8 @@
 
 # 🎯 Rangefall
 
+<img src="docs/diagrams/banner.svg" alt="Rangefall — room-scale VR shooting range built in Unity on OpenXR" width="100%">
+
 **A room-scale VR shooting range built in Unity, running on OpenXR.**
 
 Grab the pistol. Pull the trigger. Watch the steel ring.
@@ -39,29 +41,13 @@ The entire game is these four scripts. That's the whole thing.
 
 ### How a shot actually travels
 
-```
-  trigger pull
-       │
-       ▼
-  XRGrabInteractable.activated ──► FireBulletOnActivate.FireBullet()
-                                            │
-                                   Instantiate(bullet)
-                                   velocity = muzzle.forward × 20
-                                            │
-                                            ▼
-                                    ┌───────────────┐
-                                    │  physics step │
-                                    └───────┬───────┘
-                                            ▼
-                              target.OnCollisionEnter()  ──► BulletHit
-                                            │
-                              ┌─────────────┴─────────────┐
-                              ▼                           ▼
-                      Destroy(bullet)          impact VFX, billboarded
-                                                    to the XR camera
-```
+<img src="docs/diagrams/shot-pipeline.svg" alt="Trigger pull fires the XRI activated event; FireBulletOnActivate spawns a rigidbody bullet at the muzzle at 20 m/s; physics carries it downrange; BulletHit destroys the round and spawns an impact VFX billboarded to the headset." width="100%">
 
 Bullets are real rigidbodies, not raycasts. They arc, they take time to arrive, and at 20 m/s you can watch one travel downrange.
+
+### Where each script lives
+
+<img src="docs/diagrams/rig-map.svg" alt="The XR Origin holds the headset camera and two hands; ActivateTeleportationRay runs on the rig, AnimateHandOnInput on each hand, FireBulletOnActivate on the weapon prefab, and BulletHit on targets." width="100%">
 
 ---
 

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300" role="img" aria-label="Rangefall — room-scale VR shooting range built in Unity on OpenXR">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#11131a"/>
+      <stop offset="100%" stop-color="#1e2230"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff6b3d"/>
+      <stop offset="100%" stop-color="#ffb03d"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff6b3d" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#ff6b3d" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="300" fill="url(#sky)"/>
+
+  <!-- floor grid, receding -->
+  <g stroke="#2f3646" stroke-width="1" fill="none" opacity="0.9">
+    <path d="M0 232 H1200"/><path d="M0 250 H1200"/><path d="M0 272 H1200"/><path d="M0 298 H1200"/>
+    <path d="M600 214 L-180 300"/><path d="M600 214 L180 300"/><path d="M600 214 L400 300"/>
+    <path d="M600 214 L560 300"/><path d="M600 214 L640 300"/><path d="M600 214 L800 300"/>
+    <path d="M600 214 L1020 300"/><path d="M600 214 L1380 300"/>
+  </g>
+
+  <!-- distant target stands -->
+  <g opacity="0.5">
+    <rect x="188" y="176" width="5" height="48" fill="#394154"/>
+    <rect x="1008" y="176" width="5" height="48" fill="#394154"/>
+  </g>
+  <circle cx="190" cy="166" r="17" fill="none" stroke="#4b5568" stroke-width="3"/>
+  <circle cx="1010" cy="166" r="17" fill="none" stroke="#4b5568" stroke-width="3"/>
+
+  <!-- hero target, hit -->
+  <circle cx="905" cy="150" r="64" fill="url(#glow)"/>
+  <g transform="translate(905,150)">
+    <circle r="46" fill="#161a24" stroke="#59627a" stroke-width="3"/>
+    <circle r="31" fill="none" stroke="#59627a" stroke-width="3"/>
+    <circle r="16" fill="none" stroke="#ff6b3d" stroke-width="3"/>
+    <circle r="5" fill="#ff6b3d"/>
+  </g>
+  <!-- impact spark -->
+  <g stroke="#ffb03d" stroke-width="2.5" stroke-linecap="round" opacity="0.95">
+    <path d="M905 150 l26 -16"/><path d="M905 150 l24 12"/><path d="M905 150 l10 27"/>
+    <path d="M905 150 l-18 22"/><path d="M905 150 l-28 -6"/>
+  </g>
+
+  <!-- tracer from muzzle to target -->
+  <path d="M300 205 Q600 150 890 151" fill="none" stroke="url(#accent)" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
+  <circle cx="300" cy="205" r="7" fill="#ffb03d" opacity="0.9"/>
+
+  <!-- pistol silhouette, foreground left -->
+  <g transform="translate(150,170)" fill="#c6ccdb">
+    <path d="M0 24 L104 24 L104 42 L150 42 L150 54 L96 54 L96 46 L44 46 L30 92 L2 92 L14 46 L0 46 Z" opacity="0.92"/>
+    <rect x="104" y="30" width="44" height="6" fill="#8b93a8"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="72" y="92" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="66" font-weight="700" fill="#f2f4f9" letter-spacing="1">Rangefall</text>
+  <text x="76" y="126" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="19" fill="#98a1b8" letter-spacing="3.2">ROOM-SCALE VR SHOOTING RANGE</text>
+  <rect x="74" y="104" width="132" height="3" fill="url(#accent)"/>
+
+  <!-- tech chips -->
+  <g font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="13" fill="#aab2c6">
+    <rect x="74" y="236" width="86" height="26" rx="13" fill="#232838" stroke="#343b4f"/>
+    <text x="117" y="253" text-anchor="middle">Unity</text>
+    <rect x="168" y="236" width="94" height="26" rx="13" fill="#232838" stroke="#343b4f"/>
+    <text x="215" y="253" text-anchor="middle">OpenXR</text>
+    <rect x="270" y="236" width="70" height="26" rx="13" fill="#232838" stroke="#343b4f"/>
+    <text x="305" y="253" text-anchor="middle">URP</text>
+    <rect x="348" y="236" width="62" height="26" rx="13" fill="#232838" stroke="#343b4f"/>
+    <text x="379" y="253" text-anchor="middle">XRI</text>
+  </g>
+</svg>

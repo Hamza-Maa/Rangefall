@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 400" width="1180" height="400" role="img" aria-label="Rig map: the XR Origin holds the headset camera and two controllers. FireBulletOnActivate sits on the weapon, BulletHit on targets, ActivateTeleportationRay on the rig, and AnimateHandOnInput on each hand.">
+  <style>
+    .bg   { fill: #ffffff; }
+    .card { fill: #f6f8fa; stroke: #d0d7de; }
+    .rig  { fill: #eef4fb; stroke: #7aa7d4; }
+    .scr  { fill: #fff4ec; stroke: #ff6b3d; }
+    .t    { fill: #1f2328; font-family: Segoe UI, Helvetica Neue, Arial, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+    .sub  { fill: #5a6472; }
+    .arrow{ stroke: #8c96a3; fill: none; }
+    .ahead{ fill: #8c96a3; }
+    @media (prefers-color-scheme: dark) {
+      .bg   { fill: #0d1117; }
+      .card { fill: #161b22; stroke: #30363d; }
+      .rig  { fill: #0f1b2a; stroke: #3b6a9c; }
+      .scr  { fill: #23180f; stroke: #ff6b3d; }
+      .t    { fill: #e6edf3; }
+      .sub  { fill: #9aa5b1; }
+      .arrow{ stroke: #6e7781; }
+      .ahead{ fill: #6e7781; }
+    }
+  </style>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" class="ahead"/>
+    </marker>
+  </defs>
+
+  <rect width="1180" height="400" class="bg"/>
+  <text x="40" y="44" class="t" font-size="20" font-weight="600">What runs where</text>
+  <text x="40" y="68" class="sub" font-size="13.5">Four scripts, each on one object. Orange = gameplay code in this repo.</text>
+
+  <!-- XR Origin container -->
+  <rect x="40" y="94" width="470" height="268" rx="12" class="rig" stroke-width="1.6"/>
+  <text x="64" y="122" class="t" font-size="15" font-weight="600">XR Origin</text>
+  <text x="64" y="142" class="sub mono" font-size="11.5">OpenXR rig</text>
+
+  <rect x="64" y="158" width="190" height="62" rx="9" class="card"/>
+  <text x="84" y="182" class="t" font-size="13" font-weight="600">Main Camera</text>
+  <text x="84" y="202" class="sub" font-size="11.5">headset pose</text>
+
+  <rect x="286" y="158" width="200" height="62" rx="9" class="scr" stroke-width="1.5"/>
+  <text x="306" y="180" class="t mono" font-size="11.5" font-weight="600">ActivateTeleport-</text>
+  <text x="306" y="196" class="t mono" font-size="11.5" font-weight="600">ationRay</text>
+  <text x="306" y="212" class="sub" font-size="11">per-hand arc, 0.1 deadzone</text>
+
+  <rect x="64" y="240" width="190" height="98" rx="9" class="card"/>
+  <text x="84" y="264" class="t" font-size="13" font-weight="600">Left / Right hand</text>
+  <text x="84" y="284" class="sub" font-size="11.5">controller + hand rig</text>
+  <rect x="80" y="296" width="158" height="30" rx="7" class="scr" stroke-width="1.4"/>
+  <text x="92" y="316" class="t mono" font-size="11">AnimateHandOnInput</text>
+
+  <rect x="286" y="240" width="200" height="98" rx="9" class="card"/>
+  <text x="306" y="264" class="t" font-size="13" font-weight="600">Teleport areas</text>
+  <text x="306" y="284" class="sub" font-size="11.5">floor colliders</text>
+  <text x="306" y="308" class="sub" font-size="11.5">locomotion targets</text>
+
+  <!-- weapon -->
+  <path d="M518 208 H586" class="arrow" stroke-width="2" marker-end="url(#b)"/>
+  <text x="522" y="198" class="sub" font-size="11">grab</text>
+
+  <rect x="594" y="150" width="252" height="116" rx="12" class="card"/>
+  <text x="618" y="178" class="t" font-size="15" font-weight="600">Weapon</text>
+  <text x="618" y="198" class="sub mono" font-size="11.5">9mm.prefab</text>
+  <rect x="614" y="210" width="212" height="40" rx="8" class="scr" stroke-width="1.5"/>
+  <text x="628" y="228" class="t mono" font-size="11.5" font-weight="600">FireBulletOnActivate</text>
+  <text x="628" y="243" class="sub" font-size="10.5">spawns Bullet.prefab @ 20 m/s</text>
+
+  <!-- bullet -->
+  <path d="M854 208 H912" class="arrow" stroke-width="2" marker-end="url(#b)"/>
+  <text x="858" y="198" class="sub" font-size="11">fires</text>
+
+  <rect x="920" y="150" width="220" height="116" rx="12" class="card"/>
+  <text x="944" y="178" class="t" font-size="15" font-weight="600">Target</text>
+  <text x="944" y="198" class="sub mono" font-size="11.5">tag: "Bullet"</text>
+  <rect x="940" y="210" width="182" height="40" rx="8" class="scr" stroke-width="1.5"/>
+  <text x="954" y="228" class="t mono" font-size="11.5" font-weight="600">BulletHit</text>
+  <text x="954" y="243" class="sub" font-size="10.5">impact VFX, faces camera</text>
+
+  <!-- camera feedback link -->
+  <path d="M1030 274 V320 H160 V226" class="arrow" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#b)"/>
+  <text x="560" y="336" class="sub" font-size="11">VFX orients toward the headset camera</text>
+</svg>
