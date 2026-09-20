@@ -53,6 +53,8 @@ Bullets are real rigidbodies, not raycasts. They arc, they take time to arrive, 
 
 ## Gallery
 
+<img src="docs/gallery/hud-states.jpg" alt="Visualization, not a capture from a running build — the HUD shown here is illustrative and is not implemented in this repo. Four panels: sighting down the pistol at 5m with a full magazine, a reload with the magazine dropping free, the range at rest, and a target hit with muzzle flash and impact spark." width="100%">
+
 <img src="docs/gallery/range-hit.png" alt="Visualization composited from the project's own textures and VFX sprites — not a screenshot of a running build. First-person view down the range: pistol raised, muzzle flash at the barrel, tracer arcing to a steel target with the impact spark playing." width="100%">
 
 <img src="docs/gallery/teleport-arc.png" alt="Visualization composited from the project's own assets — not a screenshot of a running build. The cyan teleport arc curves from the controller to a landing reticle on the tatami floor, with targets downrange." width="100%">
